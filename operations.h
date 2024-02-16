@@ -1,6 +1,8 @@
 #ifndef OPERATIONS_H_
 #define OPERATIONS_H_
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
     typedef unsigned int uint;
 
@@ -14,7 +16,7 @@
         char *fabricante;
     } remedio;
 
-    void initialize(void);
+    FILE *initialize(remedio *remedios, char *path);
     void addRemedio(void);
     void showAll(void);
     void showRemedioById(void);
