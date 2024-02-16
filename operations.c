@@ -29,7 +29,7 @@
         return fp;
     }
 
-    void addRemedio(remedio *remedios){
+    void addRemedio(remedio *remedios, FILE *fp){
         remedio remedioTmp;
         printf("Digite o nome: ");
         scanf("%s");
@@ -41,13 +41,23 @@
         scanf("%u");
         scanf("Digite o fabricante: ");
         qtdItens++;
-        remedios = (remedio *) realloc(sizeof(remedio) * qtdItens);
+        remedios = (remedio *) realloc(remedios, sizeof(remedio) * qtdItens);
         remedios[qtdItens-1] = remedioTmp;
-        for(uint i = 0;;);
+        for(uint i = 0; i < qtdItens; i++){
+            fprintf(fp, "id: %u", &remedios[i].id);
+            fprintf(fp, "nome: %s", &remedios[i].nome);
+            fprintf(fp, "preco: %f", &remedios[i].preco);
+            fprintf(fp, "generico: %d", &remedios[i].ehGenerico);
+            fprintf(fp, "quantidade: %u", &remedios[i].qtd);
+            fprintf(fp, "categoria: %u", &remedios[i].categoria);
+            fprintf(fp, "fabricante: %s", &remedios[i].fabricante);
+        }
     }
 
 
     void showAll(void){}
+
     void showRemedioById(void){}
+    
     void updateRemedio(void){}
     void removeRemedio(void){}
