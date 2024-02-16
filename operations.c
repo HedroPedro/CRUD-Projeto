@@ -53,6 +53,7 @@
             fprintf(fp, "fabricante: %s", &remedios[i].fabricante);
         }
     }
+
     void showAll(remedio *remedios){
         for (uint i = 0; i < qtdItens; i++){
             if(remedios[i].qtd == 0){
@@ -71,11 +72,15 @@
     void showRemedioById(remedio *remedios){
         uint procuraID;
 
-        printf("Digite o ID do produto que deseja encopntrar: ");
+        printf("Digite o ID do produto que deseja encontrar: ");
         scanf("%u", &procuraID);
 
         for (uint i = 0; i < qtdItens; i++){
             if(procuraID == remedios[i].id){
+                if(remedios[i].qtd == 0){
+                    printf("O remedio nao esta em estoque.\n\n");
+                    return;
+                }
                 printf("id: %u\n", remedios[i].id);
                 printf("nome: %s\n", remedios[i].nome);
                 printf("preco: %f\n", remedios[i].preco);
@@ -88,5 +93,19 @@
         }
         printf("Id não foi encontrado.\n\n");
     }
+
     void updateRemedio(void){}
-    void removeRemedio(void){}
+    
+    void removeRemedio(remedio *remedios){
+        uint idNumero;
+
+        printf("Digite o ID do remedio que voce quer remover: ");
+        scanf("%u", idNumero);
+
+        for (uint i = 0; i < qtdItens; i++){
+            if(idNumero == remedios[i].id){
+                remedios[i].qtd = 0;
+            }
+        }
+        printf("Id não foi encontrado.\n\n");
+    }

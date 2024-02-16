@@ -31,7 +31,7 @@ int main(){
                 updateRemedio();
                 break;
             case 5:
-                removeRemedio();
+                removeRemedio(remedio *remedios);
                 break;
             case 6:
                 free(remedios);
