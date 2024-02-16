@@ -17,7 +17,7 @@
     } remedio;
 
     FILE *initialize(remedio *remedios, char *path);
-    void addRemedio(void);
+    void addRemedio(remedio *remedios);
     void showAll(remedio *remedios);
     void showRemedioById(remedio *remedios);
     void updateRemedio(void);
