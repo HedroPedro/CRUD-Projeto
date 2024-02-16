@@ -3,7 +3,10 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+    #define MAXSIZE 128
+    
     typedef unsigned int uint;
 
     typedef struct remedio{

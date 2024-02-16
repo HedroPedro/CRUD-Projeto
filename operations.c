@@ -5,6 +5,7 @@
     FILE *initialize(remedio *remedios, char *path){
         FILE *fp = fopen(path, "w+");
         remedio remedioTmp;
+        char str[MAXSIZE];
         int size = 0;
         if(!fp){
             fprintf(stderr,"ERRO AO CRIAR ARQUIVO!");
@@ -14,13 +15,14 @@
         remedios = (remedio *) malloc(sizeof(remedio) * size);
 
         while(!feof(fp)){
-            fscanf(fp, "id: %u", &remedioTmp.id);
-            fscanf(fp, "nome: %s", &remedioTmp.nome);
-            fscanf(fp, "preco: %f", &remedioTmp.preco);
-            fscanf(fp, "generico: %d", &remedioTmp.ehGenerico);
-            fscanf(fp, "quantidade: %u", &remedioTmp.qtd);
-            fscanf(fp, "categoria: %u", &remedioTmp.categoria);
-            fscanf(fp, "fabricante: %s", &remedioTmp.fabricante);
+            fscanf(fp, "id: %u\n", &remedioTmp.id);
+            fscanf(fp, "nome: %s\n", str);
+            remedioTmp.nome = (char *) malloc(sizeof(char) * strlen(str));
+            fscanf(fp, "preco: %f\n", &remedioTmp.preco);
+            fscanf(fp, "generico: %d\n", &remedioTmp.ehGenerico);
+            fscanf(fp, "quantidade: %u\n", &remedioTmp.qtd);
+            fscanf(fp, "categoria: %u\n", &remedioTmp.categoria);
+            fscanf(fp, "fabricante: %s\n", &remedioTmp.fabricante);
             size++;
             remedios = (remedio *) realloc(remedios, sizeof(remedio) * size);
             remedios[size-1] = remedioTmp;
@@ -43,14 +45,15 @@
         qtdItens++;
         remedios = (remedio *) realloc(remedios, sizeof(remedio) * qtdItens);
         remedios[qtdItens-1] = remedioTmp;
+        fseek(fp, 0, SEEK_END);
         for(uint i = 0; i < qtdItens; i++){
-            fprintf(fp, "id: %u", &remedios[i].id);
-            fprintf(fp, "nome: %s", &remedios[i].nome);
-            fprintf(fp, "preco: %f", &remedios[i].preco);
-            fprintf(fp, "generico: %d", &remedios[i].ehGenerico);
-            fprintf(fp, "quantidade: %u", &remedios[i].qtd);
-            fprintf(fp, "categoria: %u", &remedios[i].categoria);
-            fprintf(fp, "fabricante: %s", &remedios[i].fabricante);
+            fprintf(fp, "id: %u\n", qtdItens);
+            fprintf(fp, "nome: %s\n", remedios[i].nome);
+            fprintf(fp, "preco: %f\n", remedios[i].preco);
+            fprintf(fp, "generico: %d\n", remedios[i].ehGenerico);
+            fprintf(fp, "quantidade: %u\n", remedios[i].qtd);
+            fprintf(fp, "categoria: %u\n", remedios[i].categoria);
+            fprintf(fp, "fabricante: %s\n", remedios[i].fabricante);
         }
     }
     void showAll(remedio *remedios){
