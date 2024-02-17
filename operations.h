@@ -20,7 +20,7 @@
         char *fabricante;
     } remedio;
 
-    uint initialize(remedio *remedios, char *path);
+    remedio* initialize(remedio *remedios, char *path);
     void addRemedio(remedio *remedios, char *path);
     void showAll(remedio *remedios);
     void showRemedioById(remedio *remedios);
