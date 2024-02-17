@@ -8,8 +8,6 @@ int main(){
     //qtd = initialize(remedios, FILEPATH);
     printf("-- Seja Bem-Vindo!! --\n");
 
-    printf("%p", remedios);
-
     while(1){
         printf("O que deseja fazer agora?\n");
         printf("1 - Adicionar um remédio\n");
@@ -19,8 +17,6 @@ int main(){
         printf("5 - APAGAR UM REMEDIO DA EXISTENCIA\n");
         printf("6 - Nada mais a cer feito\n\n");    
         scanf("%d", &opcao);
-
-        printf("%p", remedios);
 
         switch (opcao){
             case 1:

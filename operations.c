@@ -14,7 +14,6 @@
         }
         
         remedios = (remedio *) malloc(sizeof(remedio));
-        printf("%p", remedios);
 
         while(!feof(fp)){
             fscanf(fp, "id: %u\n", &remedioTmp.id);
@@ -141,11 +140,13 @@
 
         bool achouId = 0;
         uint idNumero;
+        uint i;
+        uint eGenerico;
 
         printf("Digite o ID do remedio que voce quer alterar dados: ");
         scanf("%u", &idNumero);
 
-        for (uint i = 0; i < qtdItens; i++){
+        for (i = 0; i < qtdItens; i++){
             if(idNumero == remedios[i].id){
                 remedios[i].qtd = 0;
                 achouId = 1;
@@ -156,7 +157,29 @@
             printf("Id não foi encontrado.\n\n");
             return;
         }    
+
         printf("Alterar dados: \n");
+        printf("Digite o id: ");
+        scanf("%u", &remedios[i].id);
+        setbuf(stdin, NULL);
+        printf("Digite o nome: ");
+        fgets(remedios[i].nome, MAXSIZE+1, stdin);
+        printf("Digite o preco: ");
+        scanf("%f", &remedios[i].preco);
+        printf("Digite a quantidade: ");
+        scanf("%u", &remedios[i].qtd);
+        printf("Digite a categoria: ");
+        scanf("%u", &remedios[i].categoria);
+        printf("Digite se e generico: (0 para caso nao for)");
+        scanf("%u", &eGenerico);
+        if(!eGenerico){
+            remedios[i].ehGenerico = true; 
+        }else{
+            remedios[i].ehGenerico = false;
+        }
+        printf("Digite o fabricante: ");
+        setbuf(stdin, NULL);
+        fgets(remedios[i].fabricante, MAXSIZE+1, stdin);
 
         for(uint i = 0; i < qtdItens; i++){
             fprintf(fp, "id: %u\n", remedios[i].id);
