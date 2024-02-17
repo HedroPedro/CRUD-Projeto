@@ -138,7 +138,7 @@
         uint idNumero;
 
         printf("Digite o ID do remedio que voce quer alterar dados: ");
-        scanf("%u", idNumero);
+        scanf("%u", &idNumero);
 
         for (uint i = 0; i < qtdItens; i++){
             if(idNumero == remedios[i].id){
@@ -175,7 +175,7 @@
         uint idNumero;
 
         printf("Digite o ID do remedio que voce quer remover: ");
-        scanf("%u", idNumero);
+        scanf("%u", &idNumero);
 
         for (uint i = 0; i < qtdItens; i++){
             if(idNumero == remedios[i].id){
