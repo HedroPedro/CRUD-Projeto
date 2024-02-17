@@ -101,6 +101,7 @@
             printf("categoria: %u\n", remedios[i].categoria);
             printf("fabricante: %s\n\n", remedios[i].fabricante);
         }
+        
     }
     
 
