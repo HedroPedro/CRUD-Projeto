@@ -1,6 +1,9 @@
 #include "operations.h"
 
-    FILE *initialize(remedio *remedios, char *path){
+    uint qtdItens;
+
+
+    uint initialize(remedio *remedios, char *path){
         FILE *fp = fopen(path, "r");
         remedio remedioTmp;
         char strTmpNome[MAXSIZE], strTmpFab[MAXSIZE];
@@ -35,27 +38,40 @@
 
     void addRemedio(remedio *remedios, char *path){
         remedio remedioTmp;
-        char strTmpNome[MAXSIZE], strTmpFab[MAXSIZE];
+        char strTmpNome[MAXSIZE+1], strTmpFab[MAXSIZE+1];
+        uint eGenerico;
         FILE *fp = fopen(path, "a");
         printf("Digite o id");
-        printf("%u");
+        scanf("%u", &remedioTmp.id);
         printf("Digite o nome: ");
-        scanf("%s");
+        fgets(strTmpNome, MAXSIZE+1, stdin);
         printf("Digite o preco: ");
-        scanf("%f");
+        scanf("%f", &remedioTmp.preco);
         printf("Digite a quantidade: ");
-        scanf("%u");
+        scanf("%u", &remedioTmp.qtd);
         printf("Digite a categoria: ");
-        scanf("%u");
-        scanf("Digite o fabricante: ");
+        scanf("%u", &remedioTmp.categoria);
+        printf("Digite se e generico: (0 para caso nao for)");
+        scanf("%u", &eGenerico);
+        if(!eGenerico){
+            remedioTmp.ehGenerico = true; 
+        }else{
+            remedioTmp.ehGenerico = false;
+        }
+
+        printf("Digite o fabricante: ");
+        fgets(strTmpFab, MAXSIZE+1, stdin);
         qtdItens++;
         remedios = (remedio *) realloc(remedios, sizeof(remedio) * qtdItens);
+
+        strTmpNome[strcspn(strTmpNome, "\n")] = 0;
+        strTmpFab[strcspn(strTmpFab, "\n")] = 0;
         remedios[qtdItens-1] = remedioTmp;
-        remedios[qtdItens-1].nome = (char *) malloc(sizeof(strTmpNome));
-        remedios[qtdItens-1].fabricante = (char *) malloc(sizeof(strTmpFab)); 
+        remedios[qtdItens-1].nome = (char *) malloc(sizeof(char) * strlen(strTmpNome));
+        remedios[qtdItens-1].fabricante = (char *) malloc(sizeof(char) * strlen(strTmpFab)); 
 
         strcpy(remedios[qtdItens-1].nome, strTmpNome);
-        strcpy(remedios[qtdItens-1].nome, strTmpNome);
+        strcpy(remedios[qtdItens-1].fabricante, strTmpFab);
 
 
         fprintf(fp, "id: %u\n", remedios[qtdItens-1].id);
@@ -132,13 +148,8 @@
         if(!achouId){
             printf("Id não foi encontrado.\n\n");
             return;
-        }
-
-        
+        }    
         printf("Alterar dados: \n");
-
-
-
 
         for(uint i = 0; i < qtdItens; i++){
             fprintf(fp, "id: %u\n", remedios[i].id);

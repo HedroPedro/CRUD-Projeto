@@ -1,4 +1,5 @@
 #ifndef OPERATIONS_H_
+
 #define OPERATIONS_H_
 #include <stdbool.h>
 #include <stdio.h>
@@ -8,7 +9,6 @@
     #define MAXSIZE 128
     
     typedef unsigned int uint;
-    uint qtdItens;
 
     typedef struct remedio{
         uint id;
@@ -20,7 +20,7 @@
         char *fabricante;
     } remedio;
 
-    FILE *initialize(remedio *remedios, char *path);
+    uint initialize(remedio *remedios, char *path);
     void addRemedio(remedio *remedios, char *path);
     void showAll(remedio *remedios);
     void showRemedioById(remedio *remedios);
