@@ -1,0 +1,7 @@
+id: 12
+nome: cloroquina
+preco: 12.000000
+generico: 1
+quantidade: 41
+categoria: 1
+fabricante: pedro

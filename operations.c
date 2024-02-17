@@ -32,8 +32,10 @@
             strcpy(remedios[size-1].nome, strTmpNome);
             strcpy(remedios[size-1].fabricante, strTmpFab);
         }
+        
         qtdItens = size;
         fclose(fp);
+
         return remedios;
     }
 
