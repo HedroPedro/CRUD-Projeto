@@ -7,7 +7,7 @@
         FILE *fp = fopen(path, "r");
         remedio remedioTmp;
         char strTmpNome[MAXSIZE], strTmpFab[MAXSIZE];
-        int size = 0;
+        uint size = 0;
         if(!fp){
             fprintf(stderr,"ERRO AO CRIAR ARQUIVO!");
             exit(EXIT_FAILURE);
