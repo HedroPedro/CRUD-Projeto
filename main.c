@@ -15,7 +15,7 @@ int main(){
         printf("4 - Renovar remedio\n");
         printf("5 - APAGAR UM REMEDIO DA EXISTENCIA\n");
         printf("6 - Nada mais a cer feito\n\n");    
-        scanf("-> %d", &opcao);
+        scanf("%d", &opcao);
 
         switch (opcao){
             case 1:
