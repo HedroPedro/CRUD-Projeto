@@ -7,7 +7,7 @@
         FILE *fp = fopen(path, "r");
         remedio remedioTmp;
         char strTmpNome[MAXSIZE], strTmpFab[MAXSIZE];
-        int size = 0;
+        uint size = 0;
         if(!fp){
             fprintf(stderr,"ERRO AO CRIAR ARQUIVO!");
             exit(EXIT_FAILURE);
@@ -32,7 +32,7 @@
             strcpy(remedios[size-1].nome, strTmpNome);
             strcpy(remedios[size-1].fabricante, strTmpFab);
         }
-        
+
         qtdItens = size;
         fclose(fp);
 
