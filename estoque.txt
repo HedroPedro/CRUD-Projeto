@@ -1,7 +1,0 @@
-id: 12
-nome: cloroquina
-preco: 13.900000
-generico: 0
-quantidade: 45
-categoria: 1
-fabricante: MINHA EMPRESA
