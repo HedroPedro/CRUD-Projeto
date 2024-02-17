@@ -7,8 +7,8 @@
 
     #define MAXSIZE 128
     
-    uint qtdItens;
     typedef unsigned int uint;
+    uint qtdItens;
 
     typedef struct remedio{
         uint id;
