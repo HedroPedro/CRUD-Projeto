@@ -1,11 +1,9 @@
 #include "operations.h"
 
-    uint qtdItens;
-
     FILE *initialize(remedio *remedios, char *path){
         FILE *fp = fopen(path, "r");
         remedio remedioTmp;
-        char str[MAXSIZE];
+        char strTmpNome[MAXSIZE], strTmpFab[MAXSIZE];
         int size = 0;
         if(!fp){
             fprintf(stderr,"ERRO AO CRIAR ARQUIVO!");
@@ -16,16 +14,19 @@
 
         while(!feof(fp)){
             fscanf(fp, "id: %u\n", &remedioTmp.id);
-            fscanf(fp, "nome: %s\n", str);
-            remedioTmp.nome = (char *) malloc(sizeof(char) * strlen(str));
+            fscanf(fp, "nome: %s\n", strTmpNome);
             fscanf(fp, "preco: %f\n", &remedioTmp.preco);
             fscanf(fp, "generico: %d\n", &remedioTmp.ehGenerico);
             fscanf(fp, "quantidade: %u\n", &remedioTmp.qtd);
             fscanf(fp, "categoria: %u\n", &remedioTmp.categoria);
-            fscanf(fp, "fabricante: %s\n", &remedioTmp.fabricante);
+            fscanf(fp, "fabricante: %s\n", strTmpFab);
             size++;
             remedios = (remedio *) realloc(remedios, sizeof(remedio) * size);
             remedios[size-1] = remedioTmp;
+            remedios[size-1].nome = (char * ) malloc(sizeof(char) * strlen(strTmpNome));
+            remedios[size-1].fabricante = (char * ) malloc(sizeof(char) * strlen(strTmpFab));
+            strcpy(remedios[size-1].nome, strTmpNome);
+            strcpy(remedios[size-1].nome, strTmpFab);
         }
         qtdItens = size;
         fclose(fp);
@@ -33,6 +34,10 @@
 
     void addRemedio(remedio *remedios, char *path){
         remedio remedioTmp;
+        char strTmpNome[MAXSIZE], strTmpFab[MAXSIZE];
+        FILE *fp = fopen(path, "a");
+        printf("Digite o id");
+        printf("%u");
         printf("Digite o nome: ");
         scanf("%s");
         printf("Digite o preco: ");
@@ -45,16 +50,22 @@
         qtdItens++;
         remedios = (remedio *) realloc(remedios, sizeof(remedio) * qtdItens);
         remedios[qtdItens-1] = remedioTmp;
-        fseek(fp, 0, SEEK_END);
-        for(uint i = 0; i < qtdItens; i++){
-            fprintf(fp, "id: %u\n", qtdItens);
-            fprintf(fp, "nome: %s\n", remedios[i].nome);
-            fprintf(fp, "preco: %f\n", remedios[i].preco);
-            fprintf(fp, "generico: %d\n", remedios[i].ehGenerico);
-            fprintf(fp, "quantidade: %u\n", remedios[i].qtd);
-            fprintf(fp, "categoria: %u\n", remedios[i].categoria);
-            fprintf(fp, "fabricante: %s\n", remedios[i].fabricante);
-        }
+        remedios[qtdItens-1].nome = (char *) malloc(sizeof(strTmpNome));
+        remedios[qtdItens-1].fabricante = (char *) malloc(sizeof(strTmpFab)); 
+
+        strcpy(remedios[qtdItens-1].nome, strTmpNome);
+        strcpy(remedios[qtdItens-1].nome, strTmpNome);
+
+
+        fprintf(fp, "id: %u\n", remedios[qtdItens-1].id);
+        fprintf(fp, "nome: %s\n", remedios[qtdItens-1].nome);
+        fprintf(fp, "preco: %f\n", remedios[qtdItens-1].preco);
+        fprintf(fp, "generico: %d\n", remedios[qtdItens-1].ehGenerico);
+        fprintf(fp, "quantidade: %u\n", remedios[qtdItens-1].qtd);
+        fprintf(fp, "categoria: %u\n", remedios[qtdItens-1].categoria);
+        fprintf(fp, "fabricante: %s\n", remedios[qtdItens-1].fabricante);
+
+        fclose(fp);
     }
 
     void showAll(remedio *remedios){

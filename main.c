@@ -19,7 +19,7 @@ int main(){
 
         switch (opcao){
             case 1:
-                addRemedio();
+                addRemedio(remedios, FILEPATH);
                 break;
             case 2:
                 showAll(remedios);
@@ -34,6 +34,10 @@ int main(){
                 removeRemedio(remedios);
                 break;
             case 6:
+                for(uint i = 0; i < qtdItens; i++){
+                    free(remedios[i].nome);
+                    free(remedios[i].fabricante);
+                }
                 free(remedios);
                 exit(1);
             default:
