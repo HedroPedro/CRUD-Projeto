@@ -3,7 +3,7 @@
     uint qtdItens;
 
     FILE *initialize(remedio *remedios, char *path){
-        FILE *fp = fopen(path, "w+");
+        FILE *fp = fopen(path, "r");
         remedio remedioTmp;
         char str[MAXSIZE];
         int size = 0;
@@ -28,10 +28,10 @@
             remedios[size-1] = remedioTmp;
         }
         qtdItens = size;
-        return fp;
+        fclose(fp);
     }
 
-    void addRemedio(remedio *remedios, FILE *fp){
+    void addRemedio(remedio *remedios, char *path){
         remedio remedioTmp;
         printf("Digite o nome: ");
         scanf("%s");

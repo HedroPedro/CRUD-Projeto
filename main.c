@@ -5,7 +5,7 @@
 int main(){
     remedio *remedios;
     uint opcao;
-    FILE *file = initialize(remedios, FILEPATH);
+    initialize(remedios, FILEPATH);
     printf("-- Seja Bem-Vindo!! --\n");
     while(1){
         printf("O que deseja fazer agora?\n");
@@ -35,7 +35,6 @@ int main(){
                 break;
             case 6:
                 free(remedios);
-                fclose(file);
                 exit(1);
             default:
                 printf("Essa opcao nao pode ser escolhida, escolha outra!\n\n");
