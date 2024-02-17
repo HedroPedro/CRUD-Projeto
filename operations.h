@@ -25,6 +25,6 @@
     void showRemedioById(remedio *remedios);
 
     void updateRemedio(void);
-    void removeRemedio(void);
+    void removeRemedio(remedio *remedios);
 
 #endif
