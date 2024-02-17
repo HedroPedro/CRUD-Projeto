@@ -28,10 +28,10 @@ int main(){
                 showRemedioById(remedios);
                 break;
             case 4:
-                updateRemedio();
+                updateRemedio(remedios, FILEPATH);
                 break;
             case 5:
-                removeRemedio(remedios);
+                removeRemedio(remedios, FILEPATH);
                 break;
             case 6:
                 for(uint i = 0; i < qtdItens; i++){
