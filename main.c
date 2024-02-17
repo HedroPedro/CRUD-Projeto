@@ -4,8 +4,8 @@
 
 int main(){
     remedio *remedios;
-    uint opcao;
-    initialize(remedios, FILEPATH);
+    uint opcao, qtd;
+    qtd = initialize(remedios, FILEPATH);
     printf("-- Seja Bem-Vindo!! --\n");
     while(1){
         printf("O que deseja fazer agora?\n");
@@ -34,7 +34,7 @@ int main(){
                 removeRemedio(remedios, FILEPATH);
                 break;
             case 6:
-                for(uint i = 0; i < qtdItens; i++){
+                for(uint i = 0; i < qtd; i++){
                     free(remedios[i].nome);
                     free(remedios[i].fabricante);
                 }
