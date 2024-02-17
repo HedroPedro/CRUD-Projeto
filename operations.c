@@ -31,6 +31,7 @@
         fclose(fp);
     }
 
+
     void addRemedio(remedio *remedios, char *path){
         remedio remedioTmp;
         printf("Digite o nome: ");
@@ -45,7 +46,6 @@
         qtdItens++;
         remedios = (remedio *) realloc(remedios, sizeof(remedio) * qtdItens);
         remedios[qtdItens-1] = remedioTmp;
-        fseek(fp, 0, SEEK_END);
         for(uint i = 0; i < qtdItens; i++){
             fprintf(fp, "id: %u\n", qtdItens);
             fprintf(fp, "nome: %s\n", remedios[i].nome);
@@ -56,6 +56,7 @@
             fprintf(fp, "fabricante: %s\n", remedios[i].fabricante);
         }
     }
+
 
     void showAll(remedio *remedios){
         for (uint i = 0; i < qtdItens; i++){
@@ -72,6 +73,7 @@
         }
     }
     
+
     void showRemedioById(remedio *remedios){
         uint procuraID;
 
@@ -97,9 +99,54 @@
         printf("Id não foi encontrado.\n\n");
     }
 
-    void updateRemedio(void){}
+
+    void updateRemedio(remedio *remedios, char *path){
+        
+        FILE *fp = fopen(path, "w");
+
+        bool achouId = 0;
+        uint idNumero;
+
+        printf("Digite o ID do remedio que voce quer alterar dados: ");
+        scanf("%u", idNumero);
+
+        for (uint i = 0; i < qtdItens; i++){
+            if(idNumero == remedios[i].id){
+                remedios[i].qtd = 0;
+                achouId = 1;
+                break;
+            }
+        }
+        if(!achouId){
+            printf("Id não foi encontrado.\n\n");
+            return;
+        }
+
+        
+        printf("Alterar dados: \n");
+
+
+
+
+        for(uint i = 0; i < qtdItens; i++){
+            fprintf(fp, "id: %u\n", remedios[i].id);
+            fprintf(fp, "nome: %s\n", remedios[i].nome);
+            fprintf(fp, "preco: %f\n", remedios[i].preco);
+            fprintf(fp, "generico: %d\n", remedios[i].ehGenerico);
+            fprintf(fp, "quantidade: %u\n", remedios[i].qtd);
+            fprintf(fp, "categoria: %u\n", remedios[i].categoria);
+            fprintf(fp, "fabricante: %s\n", remedios[i].fabricante);
+        }
+
+        fclose(fp);
+    }
     
-    void removeRemedio(remedio *remedios){
+
+    void removeRemedio(remedio *remedios, char *path){
+
+        FILE *fp = fopen(path, "w");
+
+        bool achouId = 0;
         uint idNumero;
 
         printf("Digite o ID do remedio que voce quer remover: ");
@@ -108,7 +155,24 @@
         for (uint i = 0; i < qtdItens; i++){
             if(idNumero == remedios[i].id){
                 remedios[i].qtd = 0;
+                achouId = 1;
+                break;
             }
         }
-        printf("Id não foi encontrado.\n\n");
+        if(!achouId){
+            printf("Id não foi encontrado.\n\n");
+            return;
+        }
+
+        for(uint i = 0; i < qtdItens; i++){
+            fprintf(fp, "id: %u\n", remedios[i].id);
+            fprintf(fp, "nome: %s\n", remedios[i].nome);
+            fprintf(fp, "preco: %f\n", remedios[i].preco);
+            fprintf(fp, "generico: %d\n", remedios[i].ehGenerico);
+            fprintf(fp, "quantidade: %u\n", remedios[i].qtd);
+            fprintf(fp, "categoria: %u\n", remedios[i].categoria);
+            fprintf(fp, "fabricante: %s\n", remedios[i].fabricante);
+        }
+
+        fclose(fp);
     }

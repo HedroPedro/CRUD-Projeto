@@ -19,7 +19,7 @@ int main(){
 
         switch (opcao){
             case 1:
-                addRemedio();
+                addRemedio(remedios, FILEPATH);
                 break;
             case 2:
                 showAll(remedios);
@@ -28,10 +28,10 @@ int main(){
                 showRemedioById(remedios);
                 break;
             case 4:
-                updateRemedio();
+                updateRemedio(remedios, FILEPATH);
                 break;
             case 5:
-                removeRemedio(remedios);
+                removeRemedio(remedios, FILEPATH);
                 break;
             case 6:
                 free(remedios);
