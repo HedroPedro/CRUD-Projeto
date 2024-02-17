@@ -41,8 +41,9 @@
         char strTmpNome[MAXSIZE+1], strTmpFab[MAXSIZE+1];
         uint eGenerico;
         FILE *fp = fopen(path, "a");
-        printf("Digite o id");
+        printf("Digite o id: ");
         scanf("%u", &remedioTmp.id);
+        setbuf(stdin, NULL);
         printf("Digite o nome: ");
         fgets(strTmpNome, MAXSIZE+1, stdin);
         printf("Digite o preco: ");
@@ -58,8 +59,8 @@
         }else{
             remedioTmp.ehGenerico = false;
         }
-
         printf("Digite o fabricante: ");
+        setbuf(stdin, NULL);
         fgets(strTmpFab, MAXSIZE+1, stdin);
         qtdItens++;
         remedios = (remedio *) realloc(remedios, sizeof(remedio) * qtdItens);
@@ -87,6 +88,7 @@
 
 
     void showAll(remedio *remedios){
+        
         for (uint i = 0; i < qtdItens; i++){
             if(remedios[i].qtd == 0){
                 continue;
