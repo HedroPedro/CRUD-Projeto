@@ -98,7 +98,11 @@
             printf("id: %u\n", remedios[i].id);
             printf("nome: %s\n", remedios[i].nome);
             printf("preco: %f\n", remedios[i].preco);
-            printf("generico: %d\n", remedios[i].ehGenerico);
+            printf("generico? ");
+            if(remedios[i].ehGenerico)
+                printf("Verdadeiro\n");
+            else
+                printf("Falso\n");
             printf("quantidade: %u\n", remedios[i].qtd);
             printf("categoria: %u\n", remedios[i].categoria);
             printf("fabricante: %s\n\n", remedios[i].fabricante);
@@ -119,13 +123,17 @@
                     printf("O remedio nao esta em estoque.\n\n");
                     return;
                 }
-                printf("id: %u\n", remedios[i].id);
-                printf("nome: %s\n", remedios[i].nome);
-                printf("preco: %f\n", remedios[i].preco);
-                printf("generico: %d\n", remedios[i].ehGenerico);
-                printf("quantidade: %u\n", remedios[i].qtd);
-                printf("categoria: %u\n", remedios[i].categoria);
-                printf("fabricante: %s\n\n", remedios[i].fabricante);
+                printf("| id: %u\n", remedios[i].id);
+                printf("| nome: %s\n", remedios[i].nome);
+                printf("| preco: %f\n", remedios[i].preco);
+                printf("| generico? ");
+                if(remedios[i].ehGenerico)
+                    printf("Verdadeiro\n");
+                else
+                    printf("Falso\n");
+                printf("| quantidade: %u\n", remedios[i].qtd);
+                printf("| categoria: %u\n", remedios[i].categoria);
+                printf("| fabricante: %s\n\n", remedios[i].fabricante);
                 return;
             }
         }
@@ -151,8 +159,10 @@
                 break;
             }
         }
+
         if(!achouId){
             printf("Id não foi encontrado.\n\n");
+            fclose(fp);
             return;
         }    
 
@@ -169,7 +179,7 @@
         scanf("%u", &remedios[i].qtd);
         printf("Digite a categoria: ");
         scanf("%u", &remedios[i].categoria);
-        printf("Digite se e generico: (0 para caso nao for)");
+        printf("Digite se e generico: (0 para caso nao for):");
         scanf("%u", &eGenerico);
         if(eGenerico){
             remedios[i].ehGenerico = true; 
@@ -183,15 +193,7 @@
         remedios[i].fabricante = realloc(remedios[i].fabricante, sizeof(char) * strlen(strTmp));
         strcpy(remedios[i].fabricante, strTmp);
 
-        for(uint i = 0; i < qtdItens; i++){
-            fprintf(fp, "id: %u\n", remedios[i].id);
-            fprintf(fp, "nome: %s\n", remedios[i].nome);
-            fprintf(fp, "preco: %f\n", remedios[i].preco);
-            fprintf(fp, "generico: %d\n", remedios[i].ehGenerico);
-            fprintf(fp, "quantidade: %u\n", remedios[i].qtd);
-            fprintf(fp, "categoria: %u\n", remedios[i].categoria);
-            fprintf(fp, "fabricante: %s\n", remedios[i].fabricante);
-        }
+        salvarDados(remedios, path);
 
         fclose(fp);
     }
