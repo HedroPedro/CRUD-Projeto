@@ -137,7 +137,7 @@
                 return;
             }
         }
-        printf("Id não foi encontrado.\n\n");
+        printf("Id nao foi encontrado.\n\n");
     }
 
 
@@ -191,6 +191,7 @@
         setbuf(stdin, NULL);
         fgets(strTmp, MAXSIZE+1, stdin);
         remedios[i].fabricante = realloc(remedios[i].fabricante, sizeof(char) * strlen(strTmp));
+        strTmp[strcspn(strTmp, "\n")] = 0;
         strcpy(remedios[i].fabricante, strTmp);
 
         salvarDados(remedios, path);
