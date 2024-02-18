@@ -5,7 +5,6 @@ generico: 0
 quantidade: 43
 categoria: 1
 fabricante: gordao
-
 id: 2
 nome: pedro
 preco: 134.000000
@@ -13,7 +12,6 @@ generico: 0
 quantidade: 23
 categoria: 1501
 fabricante: pedro
-
 id: 1
 nome: dasd
 preco: 12.000000
@@ -21,4 +19,10 @@ generico: 0
 quantidade: 0
 categoria: 12
 fabricante: dasd
-
+id: 12
+nome: 2
+preco: 3.000000
+generico: 0
+quantidade: 0
+categoria: 5
+fabricante: 7

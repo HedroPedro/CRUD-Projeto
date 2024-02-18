@@ -201,9 +201,6 @@
     
 
     void removeRemedio(remedio *remedios, char *path){
-
-        FILE *fp = fopen(path, "w");
-
         bool achouId = 0;
         uint idNumero;
 
@@ -217,14 +214,13 @@
                 break;
             }
         }
+
+
         if(!achouId){
             printf("Id não foi encontrado.\n\n");
-            return;
         }
 
         salvarDados(remedios, path);
-
-        fclose(fp);
     }
 
     void salvarDados(remedio *remedios, char *path){
