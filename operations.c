@@ -2,7 +2,6 @@
 
     uint qtdItens;
 
-
     remedio* initialize(remedio *remedios, char *path){
         FILE *fp = fopen(path, "r");
         remedio remedioTmp;
@@ -135,9 +134,8 @@
 
 
     void updateRemedio(remedio *remedios, char *path){
-        
         FILE *fp = fopen(path, "w");
-
+        char strTmp[MAXSIZE+1];
         bool achouId = 0;
         uint idNumero;
         uint i;
@@ -159,11 +157,12 @@
         }    
 
         printf("Alterar dados: \n");
-        printf("Digite o id: ");
-        scanf("%u", &remedios[i].id);
-        setbuf(stdin, NULL);
         printf("Digite o nome: ");
-        fgets(remedios[i].nome, MAXSIZE+1, stdin);
+        setbuf(stdin, NULL);
+        fgets(strTmp, MAXSIZE+1, stdin);
+        strTmp[strcspn(strTmp, "\n")] = 0;
+        remedios[i].nome = realloc(remedios[i].nome, sizeof(char) * strlen(strTmp));
+        strcpy(remedios[i].nome, strTmp);
         printf("Digite o preco: ");
         scanf("%f", &remedios[i].preco);
         printf("Digite a quantidade: ");
@@ -172,14 +171,17 @@
         scanf("%u", &remedios[i].categoria);
         printf("Digite se e generico: (0 para caso nao for)");
         scanf("%u", &eGenerico);
-        if(!eGenerico){
+        if(eGenerico){
             remedios[i].ehGenerico = true; 
         }else{
             remedios[i].ehGenerico = false;
         }
+
         printf("Digite o fabricante: ");
         setbuf(stdin, NULL);
-        fgets(remedios[i].fabricante, MAXSIZE+1, stdin);
+        fgets(strTmp, MAXSIZE+1, stdin);
+        remedios[i].fabricante = realloc(remedios[i].fabricante, sizeof(char) * strlen(strTmp));
+        strcpy(remedios[i].fabricante, strTmp);
 
         for(uint i = 0; i < qtdItens; i++){
             fprintf(fp, "id: %u\n", remedios[i].id);
