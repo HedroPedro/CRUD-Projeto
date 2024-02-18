@@ -21,6 +21,7 @@
     } remedio;
 
     remedio* initialize(remedio *remedios, char *path, uint *qtd);
+    
     void addRemedio(remedio *remedios, char *path);
     void showAll(remedio *remedios);
     void showRemedioById(remedio *remedios);

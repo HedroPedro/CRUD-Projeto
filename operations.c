@@ -146,7 +146,26 @@
                 else
                     printf("Falso\n");
                 printf("quantidade: %u\n", remedios[i].qtd);
-                printf("categoria: %u\n", remedios[i].categoria);
+                printf("categoria: ");
+                switch (remedios[i].categoria){
+                case 1:
+                    printf("analgesico\n");
+                    break;                
+                case 2:
+                    printf("anti-inflamatorio\n");
+                    break;
+                case 3:
+                    printf("calmante\n");
+                    break;
+                case 4:
+                    printf("sedativo\n");
+                    break;
+                case 5:
+                    printf("diruetico\n");
+                    break;
+                default:
+                    break;
+                }
                 printf("fabricante: %s\n\n", remedios[i].fabricante);
                 return;
             }
@@ -190,8 +209,18 @@
         scanf("%f", &remedios[i].preco);
         printf("Digite a quantidade: ");
         scanf("%u", &remedios[i].qtd);
-        printf("Digite a categoria: ");
-        scanf("%u", &remedios[i].categoria);
+        while(true){
+            printf(" 1 - Analgesico\n");
+            printf(" 2 - Anti-inflamatorio\n");
+            printf(" 3 - Calmantes\n");
+            printf(" 4 - Sedativos\n");
+            printf(" 5 - Diureticos\n");
+            scanf("%u", &remedios[i].categoria);
+            if (remedios[i].categoria < 6 && remedios[i].categoria > 0){
+                break;
+            }
+            printf("Esse valor nao esta disponivel. Escolha outro: \n");
+        }
         printf("Digite se e generico: (0 para caso nao for):");
         scanf("%u", &eGenerico);
         if(eGenerico){
