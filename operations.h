@@ -24,8 +24,9 @@
     void addRemedio(remedio *remedios, char *path);
     void showAll(remedio *remedios);
     void showRemedioById(remedio *remedios);
-
     void updateRemedio(remedio *remedios, char *path);
     void removeRemedio(remedio *remedios, char *path);
+
+    void salvarDados(remedio *remedios, char *path);
 
 #endif
