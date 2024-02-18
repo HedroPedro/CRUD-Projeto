@@ -7,7 +7,7 @@ Um projeto em C de um CRUD (Create, Read, Update, Delete),
 ## Requisitos
 
 - Compilador C
-- Seu editor de texto favorito 
+- Seu editor de texto favorito
 
 ## Como rodar
 

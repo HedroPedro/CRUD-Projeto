@@ -1,5 +1,6 @@
-all:
+compile-run: build run
 	build
+	
 
 build:
 	gcc main.c operations.c -o main

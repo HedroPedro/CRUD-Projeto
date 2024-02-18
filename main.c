@@ -3,9 +3,8 @@
 #define FILEPATH "./estoque.txt"
 
 int main(){
-    remedio *remedios = initialize(remedios, FILEPATH);
     uint opcao, qtd;
-    //qtd = initialize(remedios, FILEPATH);
+    remedio *remedios = initialize(remedios, FILEPATH, &qtd);
     printf("-- Bem-Vindo ao estoque! --\n");
 
     while(1){

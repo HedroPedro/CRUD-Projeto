@@ -2,7 +2,7 @@
 
     uint qtdItens;
 
-    remedio* initialize(remedio *remedios, char *path){
+    remedio* initialize(remedio *remedios, char *path, uint *qtd){
         FILE *fp = fopen(path, "r");
         remedio remedioTmp;
         char strTmpNome[MAXSIZE], strTmpFab[MAXSIZE];
@@ -33,6 +33,8 @@
 
         qtdItens = size;
         fclose(fp);
+
+        (*qtd) = size;
 
         return remedios;
     }
@@ -135,17 +137,17 @@
                     printf("O remedio nao esta em estoque.\n\n");
                     return;
                 }
-                printf("| id: %u\n", remedios[i].id);
-                printf("| nome: %s\n", remedios[i].nome);
-                printf("| preco: %f\n", remedios[i].preco);
-                printf("| generico? ");
+                printf("id: %u\n", remedios[i].id);
+                printf("nome: %s\n", remedios[i].nome);
+                printf("preco: %f\n", remedios[i].preco);
+                printf("generico? ");
                 if(remedios[i].ehGenerico)
                     printf("Verdadeiro\n");
                 else
                     printf("Falso\n");
-                printf("| quantidade: %u\n", remedios[i].qtd);
-                printf("| categoria: %u\n", remedios[i].categoria);
-                printf("| fabricante: %s\n\n", remedios[i].fabricante);
+                printf("quantidade: %u\n", remedios[i].qtd);
+                printf("categoria: %u\n", remedios[i].categoria);
+                printf("fabricante: %s\n\n", remedios[i].fabricante);
                 return;
             }
         }
