@@ -18,7 +18,7 @@ Um projeto em C de um CRUD (Create, Read, Update, Delete),
 ## Autores
 
 - Pedro Henrqiue de Oliveira
-- Gustav Keller
+- Gustav Adolf Lutz Keller
 
 ## Colaboração
 
