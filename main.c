@@ -6,16 +6,16 @@ int main(){
     remedio *remedios = initialize(remedios, FILEPATH);
     uint opcao, qtd;
     //qtd = initialize(remedios, FILEPATH);
-    printf("-- Seja Bem-Vindo!! --\n");
+    printf("-- Bem-Vindo ao estoque! --\n");
 
     while(1){
         printf("O que deseja fazer agora?\n");
-        printf("1 - Adicionar um remédio\n");
+        printf("1 - Adicionar um produto\n");
         printf("2 - Ver todos os produtos\n");
-        printf("3 - Procurar um remédio\n");
-        printf("4 - Renovar remedio\n");
-        printf("5 - APAGAR UM REMEDIO DA EXISTENCIA\n");
-        printf("6 - Nada mais a cer feito\n\n");    
+        printf("3 - Procurar um produto\n");
+        printf("4 - Atualizar um produto\n");
+        printf("5 - Remover um produto\n");
+        printf("6 - Sair do estoque\n -> ");    
         scanf("%d", &opcao);
 
         switch (opcao){
@@ -35,6 +35,7 @@ int main(){
                 removeRemedio(remedios, FILEPATH);
                 break;
             case 6:
+                salvarDados(remedios, FILEPATH);
                 for(uint i = 0; i < qtd; i++){
                     free(remedios[i].nome);
                     free(remedios[i].fabricante);

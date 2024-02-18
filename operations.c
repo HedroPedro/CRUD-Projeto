@@ -219,6 +219,15 @@
             return;
         }
 
+        salvarDados(remedios, path);
+
+        fclose(fp);
+    }
+
+    void salvarDados(remedio *remedios, char *path){
+
+        FILE *fp = fopen(path, "w");
+
         for(uint i = 0; i < qtdItens; i++){
             fprintf(fp, "id: %u\n", remedios[i].id);
             fprintf(fp, "nome: %s\n", remedios[i].nome);
