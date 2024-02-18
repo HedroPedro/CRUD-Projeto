@@ -142,7 +142,6 @@
 
 
     void updateRemedio(remedio *remedios, char *path){
-        FILE *fp = fopen(path, "w");
         char strTmp[MAXSIZE+1];
         bool achouId = 0;
         uint idNumero;
@@ -162,7 +161,7 @@
 
         if(!achouId){
             printf("Id não foi encontrado.\n\n");
-            fclose(fp);
+            salvarDados(remedios, path);
             return;
         }    
 
@@ -195,8 +194,6 @@
         strcpy(remedios[i].fabricante, strTmp);
 
         salvarDados(remedios, path);
-
-        fclose(fp);
     }
     
 
