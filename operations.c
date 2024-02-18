@@ -52,11 +52,23 @@
         scanf("%f", &remedioTmp.preco);
         printf("Digite a quantidade: ");
         scanf("%u", &remedioTmp.qtd);
-        printf("Digite a categoria: ");
-        scanf("%u", &remedioTmp.categoria);
+        printf("Digite a categoria:\n");
+        while(true){
+            printf(" 1 - Analgesico\n");
+            printf(" 2 - Anti-inflamatorio\n");
+            printf(" 3 - Calmantes\n");
+            printf(" 4 - Sedativos\n");
+            printf(" 5 - Diureticos\n");
+            scanf("%u", &remedioTmp.categoria);
+            if (remedioTmp.categoria < 6 && remedioTmp.categoria > 0){
+                break;
+            }
+            printf("Esse valor nao esta disponivel. Escolha outro: \n");
+        }
+        
         printf("Digite se e generico: (0 para caso nao for)");
         scanf("%u", &eGenerico);
-        if(!eGenerico){
+        if(eGenerico){
             remedioTmp.ehGenerico = true; 
         }else{
             remedioTmp.ehGenerico = false;
@@ -211,8 +223,6 @@
                 break;
             }
         }
-
-
         if(!achouId){
             printf("Id não foi encontrado.\n\n");
         }
