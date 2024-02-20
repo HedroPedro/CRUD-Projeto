@@ -185,11 +185,10 @@
         scanf("%u", &idNumero);
 
         for (i = 0; i < qtdItens; i++){
-            if(idNumero == remedios[i].id){
-                remedios[i].qtd = 0;
-                achouId = 1;
+           if(idNumero == remedios[i].id){
+                achouId = true;
                 break;
-            }
+           }
         }
 
         if(!achouId){

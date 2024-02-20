@@ -1,5 +1,4 @@
 #ifndef OPERATIONS_H_
-
 #define OPERATIONS_H_
 #include <stdbool.h>
 #include <stdio.h>
