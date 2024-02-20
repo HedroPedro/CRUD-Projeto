@@ -195,7 +195,7 @@
 
     void updateRemedio(remedio *remedios, char *path){
         char strTmp[MAXSIZE+1];
-        bool achouId = 0;
+        bool achouId = false;
         uint idNumero;
         uint i;
         uint eGenerico;
@@ -204,10 +204,10 @@
         scanf("%u", &idNumero);
 
         for (i = 0; i < qtdItens; i++){
-            if(idNumero == remedios[i].id){
-                achouId = 1;
+           if(idNumero == remedios[i].id){
+                achouId = true;
                 break;
-            }
+           }
         }
         if(!achouId){
             printf("Id não foi encontrado.\n\n");
