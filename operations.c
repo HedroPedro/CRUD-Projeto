@@ -176,7 +176,7 @@
 
     void updateRemedio(remedio *remedios, char *path){
         char strTmp[MAXSIZE+1];
-        bool achouId = 0;
+        bool achouId = false;
         uint idNumero;
         uint i;
         uint eGenerico;
@@ -240,7 +240,7 @@
     
 
     void removeRemedio(remedio *remedios, char *path){
-        bool achouId = 0;
+        bool achouId = false;
         uint idNumero;
 
         printf("Digite o ID do remedio que voce quer remover: ");
