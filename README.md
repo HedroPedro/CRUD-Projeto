@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Um projeto em C de um CRUD (Create, Read, Update, Delete),
+Um projeto em C de um CRUD (Create, Read, Update, Delete) de uma farmácia
 
 ## Requisitos
 
