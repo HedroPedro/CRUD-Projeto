@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Um projeto em C de um CRUD (Create, Read, Update, Delete),
+Um projeto em C de um CRUD (Create, Read, Update, Delete) de uma farmácia
 
 ## Requisitos
 
@@ -12,8 +12,9 @@ Um projeto em C de um CRUD (Create, Read, Update, Delete),
 ## Como rodar
 
 - Se estiver usando windows, execute no cmd:
-    `make.bat`, ou se estiver usando powershell, `.\make.bat`
-- Caso esteja usando qualquer sistema unix, use a makefile, simplimente digitando `make` no prompt de comando de seu sistema
+   ```bash make.bat```, ou se estiver usando powershell, ``` bash
+   .\make.bat```
+- Caso esteja usando qualquer sistema linux, use a makefile, simplimente digitando `make` no prompt de comando de seu sistema
 
 ## Autores
 
