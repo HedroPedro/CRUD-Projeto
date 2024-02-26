@@ -25,8 +25,8 @@
             size++;
             remedios = (remedio *) realloc(remedios, sizeof(remedio) * size);
             remedios[size-1] = remedioTmp;
-            remedios[size-1].nome = (char * ) malloc(sizeof(char) * strlen(strTmpNome));
-            remedios[size-1].fabricante = (char * ) malloc(sizeof(char) * strlen(strTmpFab));
+            remedios[size-1].nome = (char * ) malloc(sizeof(char) * (strlen(strTmpNome)+1));
+            remedios[size-1].fabricante = (char * ) malloc(sizeof(char) * (strlen(strTmpFab)+1));
             strcpy(remedios[size-1].nome, strTmpNome);
             strcpy(remedios[size-1].fabricante, strTmpFab);
         }
@@ -84,8 +84,8 @@
         strTmpNome[strcspn(strTmpNome, "\n")] = 0;
         strTmpFab[strcspn(strTmpFab, "\n")] = 0;
         remedios[qtdItens-1] = remedioTmp;
-        remedios[qtdItens-1].nome = (char *) malloc(sizeof(char) * strlen(strTmpNome));
-        remedios[qtdItens-1].fabricante = (char *) malloc(sizeof(char) * strlen(strTmpFab)); 
+        remedios[qtdItens-1].nome = (char *) malloc(sizeof(char) * (strlen(strTmpNome)+1));
+        remedios[qtdItens-1].fabricante = (char *) malloc(sizeof(char) * (strlen(strTmpFab)+1)); 
 
         strcpy(remedios[qtdItens-1].nome, strTmpNome);
         strcpy(remedios[qtdItens-1].fabricante, strTmpFab);
@@ -220,7 +220,7 @@
         setbuf(stdin, NULL);
         fgets(strTmp, MAXSIZE+1, stdin);
         strTmp[strcspn(strTmp, "\n")] = 0;
-        remedios[i].nome = realloc(remedios[i].nome, sizeof(char) * strlen(strTmp));
+        remedios[i].nome = realloc(remedios[i].nome, sizeof(char) * (strlen(strTmp)+1));
         strcpy(remedios[i].nome, strTmp);
         printf("Digite o preco: ");
         scanf("%f", &remedios[i].preco);
@@ -249,7 +249,7 @@
         printf("Digite o fabricante: ");
         setbuf(stdin, NULL);
         fgets(strTmp, MAXSIZE+1, stdin);
-        remedios[i].fabricante = realloc(remedios[i].fabricante, sizeof(char) * strlen(strTmp));
+        remedios[i].fabricante = realloc(remedios[i].fabricante, sizeof(char) * (strlen(strTmp)+1));
         strTmp[strcspn(strTmp, "\n")] = 0;
         strcpy(remedios[i].fabricante, strTmp);
 
