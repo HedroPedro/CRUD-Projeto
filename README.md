@@ -12,7 +12,7 @@ Um projeto em C de um CRUD (Create, Read, Update, Delete) de uma farmácia
 ## Como rodar
 
 - Se estiver usando windows, execute no cmd:
-   ```bash make.bat```, ou se estiver usando powershell, ``` bash
+   ```make.bat```, ou se estiver usando powershell, ```
    .\make.bat```
 - Caso esteja usando qualquer sistema linux, use a makefile, simplimente digitando `make` no prompt de comando de seu sistema
 
